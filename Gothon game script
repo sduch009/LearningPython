@@ -23,7 +23,7 @@ class Engine(object):
         last_scene = self.scene_map.next_scene('finished')
 
         while current_scene != last_scene:
-            next_scene_name = current_scene
+            next_scene_name = current_scene.enter()
             current_scene = self.scene_map.next_scene(next_scene_name)
 
         # be sure to print out the last scene
@@ -161,6 +161,7 @@ class TheBridge(Scene):
                 disarm the bomb.  You die knowing they will probably
                 blow up when it goes off.
                 """))
+             return 'death'
 
          elif action == "slowly place the bomb":
              print(dedent("""
