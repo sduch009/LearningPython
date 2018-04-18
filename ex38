@@ -1,0 +1,44 @@
+#ex38 : Doing Things to Lists
+# When you write "mystuff.append('hello')" you are actually setting off a chain of events inside python to cause something
+# to happen to the "mystuff" list.  Here's how it works:
+# 1.    Python sees you mentioned "mystuff" and looks up that variable.  It might have to look backward
+#       to see if you created it with =, if it is a function argument, or if it's a global variable.  Either way
+#       it has to find "mystuff" first.
+# 2.    Once it finds "mystuff" it reads the . (period) operator and starts to look at variables that are a part
+#       of "mystuff".  since "mystuff" is a list, it knows that "mystuff" has a bunch of functions.
+# 3.    It then hits "append" and compares the name to all the names that "mystuff" says it owns.  If "append" is in there
+#       (it is), then Python grabs "that" to use.
+# 4.    Next Python sees the ( (open parenthesis) and realizes "Oh hey, this should be a function.".  At this point
+#       it "calls" (runs or executes) the function just like normal, but calls the function with an extra argument.
+# 5.    That extra argument is..."mystuff"!  I know, weird right?  But that's how Python works, so it's best to just
+#       remember it and assume that's the result.  What happens, at the end of all this, is a function call that looks like
+#       "append(mystuff, 'hello')" instead of what you read, which is "mystuff.append('hello')""
+
+ten_things = "Apples Oranges Crows Telephone Light Sugar"
+
+print("Wait there are not 10 things in that list.  Let's fix that.")
+
+stuff = ten_things.split(' ')
+more_stuff = ["Day", "Night", "Song", "Frisbee",
+              "Corn", "Banana", "Girl", "Boy"]
+
+#while then number of items in stuff doesnt add up to 10:
+while len(stuff) != 10:
+    #execute .pop() using more_stuff when calling next_one, starting with the last item entered
+    #.pop seems to take the last item entered, prints it, and somehow removes it from the further iterations
+    next_one = more_stuff.pop()
+    #Print "Adding: ", then execute more_stuff.pop()
+    print("Adding: ", next_one)
+
+    stuff.append(next_one)
+    print(f"There are {len(stuff)} items now. ")
+
+print("There we go: ", stuff)
+
+print("Let's do some things with stuff.")
+
+print(stuff[1]) #prints the second value (1) of the list
+print(stuff[-1]) #woah! fancy #prints the last value of the lsit
+print(stuff.pop()) #prints the last item of the list
+print(' '.join(stuff)) #what? cool!, removes apostrophes?
+print('#'.join(stuff[3:5])) #super stellar! #joins items 3 and 5 with # Telephone#Light
