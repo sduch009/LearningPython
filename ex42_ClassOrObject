@@ -1,0 +1,80 @@
+#Figuring out if something ought to be a class or object...
+# First need to lean when to use is-a and/or has-a
+#Go through this piece of code and replace each ##?? comment with a comment that says
+#whether the next line represents an is-a or a has-a relationship and what that relationship is.
+
+## Animal is-a object (yes, sort of confusing) look at the extra credit
+class Animal(object):
+    pass
+
+#make a class Dog that is-a Animal,
+class Dog(Animal):
+    #the class Dog that is-a Animal, HAS-A __init__ that takes self and name params
+    def __init__(self, name):
+        #takes the name attribut of self and sets it to name
+        self.name = name
+
+#makes a class Cat that is-a Animal
+class Cat(Animal):
+    #class Cat that is-a Animal has-a __init__ that takes self and name params
+    def __init__(self, name):
+        #takes  the name attribute of self and sets it to name
+        self.name = name
+
+#makes a class Person that is-a object
+class Person(object):
+    #class person that is-a object has-a __init__ that takes self and name params
+    def __init__(self, name):
+        # takes the name attribute of self and sets it to name
+        self.name = name
+
+        # Person has-a pet of some kind
+        self.pet = None
+
+#makes a class Employee that is-a Person
+class Employee(Person):
+    #the class Employee that is-a person has-a __init__ that takes self, name and salary params.
+    def __init__(self, name, salary):
+        #from super ran with Employee and self params, get the __init__ function and call it with param name
+        super(Employee, self).__init__(name) ###What does super do??::Thats how you can run the __init__ method of a parent class reliably
+        #sets the salary attribute of self to salary
+        self.salary = salary
+
+#makes a class fish that is-a object
+class Fish(object):
+    pass
+
+#makes a class Salmon that is-a fish
+class Salmon(Fish):
+    pass
+
+#makes a class halibut that is-a fish
+class Halibut(Fish):
+    pass
+
+## rover is-a Dog
+rover = Dog("Rover")
+
+#satan is-a cat
+satan = Cat("Satan")
+
+#mary is-a person
+mary = Person("Mary")
+
+#takes the pet attribute of mary and sets it to satan
+mary.pet = satan
+
+#frank is-a employee that takes the Frank and 120000 params)
+frank = Employee("Frank", 120000)
+
+#takes the pet attribute of frank and sets it to rover
+frank.pet = rover
+
+#flipper is-a instance of fish
+flipper = Fish()
+
+#crouse is-a instance of salmon
+crouse = Salmon()
+
+#harry is-a instance of Halibut
+harry = Halibut()
